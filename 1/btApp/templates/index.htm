@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    var times = [];
+    {% for s in tem_time %}
+    times.push('{{s|date:"Y-m-d H:i:s"}}')
+    {% endfor %}
+    //var sss = ['123','222','333','444','555'];
+    $('#container1').highcharts({
+        title: {
+            text: 'Temperature',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Temperature sensor',
+            x: -20
+        },
+        xAxis: {
+             min:0,
+             max:30,
+             categories:times,
+             
+        },
+        scrollbar: {
+               enabled: true
+             },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '温度sensor',
+            data: {{tem_data}}
+        }]
+    });
+});
+		</script>
+
+                <script type="text/javascript">
+$(function () {
+    var times = [];
+    {% for s in co2_time %}
+    times.push('{{s|date:"Y-m-d H:i:s"}}')
+    {% endfor %}
+    //var sss = ['123','222','333','444','555'];
+    $('#container2').highcharts({
+        title: {
+            text: 'Co2',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Co2 sensor',
+            x: -20
+        },
+        xAxis: {
+             min:0,
+             max:30,
+             categories:times,
+             
+        },
+        scrollbar: {
+               enabled: true
+             },
+        yAxis: {
+            title: {
+                text: 'Co2 concentration'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'ppm'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '二氧化碳sensor',
+            data: {{co2_data}}
+        }]
+    });
+});
+        </script>
+                        <script type="text/javascript">
+$(function () {
+    var times = [];
+    {% for s in moi_time %}
+    times.push('{{s|date:"Y-m-d H:i:s"}}')
+    {% endfor %}
+    //var sss = ['123','222','333','444','555'];
+    $('#container3').highcharts({
+        title: {
+            text: 'Moisture of soil',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Moisture sensor',
+            x: -20
+        },
+        xAxis: {
+             min:0,
+             max:30,
+             categories:times,
+             
+        },
+        scrollbar: {
+               enabled: true
+             },
+        yAxis: {
+            title: {
+                text: 'Moisture'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '土壤湿度sensor',
+            data: {{moi_data}}
+        }]
+    });
+});
+        </script>
+                                <script type="text/javascript">
+$(function () {
+    var times = [];
+    {% for s in lig_time %}
+    times.push('{{s|date:"Y-m-d H:i:s"}}')
+    {% endfor %}
+    //var sss = ['123','222','333','444','555'];
+    $('#container4').highcharts({
+        title: {
+            text: 'Light',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Light sensor',
+            x: -20
+        },
+        xAxis: {
+             min:0,
+             max:30,
+             categories:times,
+             
+        },
+        scrollbar: {
+               enabled: true
+             },
+        yAxis: {
+            title: {
+                text: 'Light'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ''
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: '光线强度sensor',
+            data: {{lig_data}}
+        }]
+    });
+});
+        </script>
+	</head>
+	<body>
+<script src="../../static/js/highstock.js"></script>
+<script src="../../static/js/highcharts.js"></script>
+<script src="../../static/js/modules/exporting.js"></script>
+
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container4" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	</body>
+</html>
